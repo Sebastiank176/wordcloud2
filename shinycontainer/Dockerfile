@@ -1,7 +1,5 @@
 FROM r-base:latest
 
-MAINTAINER Flavio Barros "flaviommbarros@gmail.com"
-
 RUN apt-get update && apt-get install -y \
     sudo \
     gdebi-core \
@@ -29,4 +27,5 @@ EXPOSE 80
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 
-CMD ["/usr/bin/shiny-server.sh"]
+# CMD ["/usr/bin/shiny-server.sh"]
+RUN ["chmod", "+x", "/usr/bin/shiny-server.sh"]

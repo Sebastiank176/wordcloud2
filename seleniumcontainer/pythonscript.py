@@ -1,5 +1,8 @@
 url = "https://www.linkedin.com/login"
 
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -10,17 +13,16 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options  
 from random import randint
 
-chrome_options = Options()  
-chrome_options.add_argument("--headless")  
-  
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+driver = webdriver.Chrome(chrome_options=chrome_options)
+driver.implicitly_wait(10)
 
-driver = webdriver.Chrome(executable_path="c:\\bin\\chromedriver.exe"
-                        #  ,   chrome_options=chrome_options
-                         ) 
 driver.get(url)
 
 actions = webdriver.ActionChains(driver)
-
 
 time.sleep(randint(10, 30)/10)
 
